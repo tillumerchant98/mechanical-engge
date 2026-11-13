@@ -1,0 +1,1025 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mechanical Engineering Learning Registration</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at 12% 12%, rgba(34, 211, 238, 0.30), transparent 32%),
+        radial-gradient(ellipse at 88% 82%, rgba(99, 102, 241, 0.32), transparent 36%),
+        radial-gradient(ellipse at 75% 8%, rgba(14, 165, 233, 0.18), transparent 28%),
+        linear-gradient(135deg, #071329 0%, #102a56 48%, #10143b 100%);
+    background-attachment: fixed;
+    padding: 35px 15px;
+    color: #172033;
+}
+
+/* Main Card */
+.form-container {
+    width: 100%;
+    max-width: 850px;
+    margin: auto;
+    background: #ffffff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow:
+        0 28px 75px rgba(0,0,0,0.48),
+        0 0 0 1px rgba(255,255,255,0.12);
+}
+
+/* Header */
+.header {
+    background: linear-gradient(120deg, #123b72 0%, #075985 52%, #312e81 100%);
+    color: white;
+    text-align: center;
+    padding: 38px 25px 32px;
+    border-bottom: 4px solid #c7a34b;
+}
+
+.header h1 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.header h2 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.header p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* Body */
+.form-body {
+    padding: 35px;
+}
+
+/* Section */
+.section {
+    margin-bottom: 35px;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 20px;
+    padding-bottom: 9px;
+    border-bottom: 2px solid #eeeeee;
+}
+
+/* Grid */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.full {
+    grid-column: 1 / -1;
+}
+
+/* Fields */
+.field {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #202938;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    border: 1px solid #cfd5dc;
+    background: #fff;
+    border-radius: 8px;
+    padding: 14px 15px;
+    font-size: 15px;
+    color: #1f2937;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #8a929c;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #1769e0;
+    box-shadow: 0 0 0 3px rgba(23,105,224,0.12);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+/* Subscription Card */
+.subscription-card {
+    background: #f7faff;
+    border: 1px solid #dce8ff;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.subscription-card h3 {
+    color: #064fc4;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.subscription-card p {
+    color: #5d6673;
+    margin-bottom: 15px;
+}
+
+.features {
+    list-style: none;
+}
+
+.features li {
+    margin: 9px 0;
+    color: #293241;
+}
+
+.features li::before {
+    content: "✓";
+    color: #087f23;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.price-row {
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid #d7e2f5;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price-row span:first-child {
+    font-weight: 600;
+}
+
+.price {
+    color: #0759e8;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+/* Payment Selection */
+.payment-methods {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.payment-method {
+    position: relative;
+}
+
+.payment-method input {
+    position: absolute;
+    opacity: 0;
+}
+
+.payment-label {
+    display: block;
+    border: 2px solid #dce0e6;
+    border-radius: 10px;
+    padding: 17px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.payment-method input:checked + .payment-label {
+    border-color: #0759e8;
+    background: #eef5ff;
+    color: #0759e8;
+}
+
+/* Payment Details */
+.payment-box {
+    border: 1px solid #dfe4ea;
+    background: #fafafa;
+    border-radius: 12px;
+    padding: 22px;
+    margin-bottom: 20px;
+}
+
+.payment-box h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.payment-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 11px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.payment-row:last-child {
+    border-bottom: none;
+}
+
+.payment-row .label {
+    color: #68717d;
+}
+
+.payment-row .value {
+    font-weight: 600;
+    text-align: right;
+    word-break: break-word;
+}
+
+/* Notice */
+.notice {
+    background: #fff9e6;
+    border-left: 4px solid #f5c400;
+    padding: 14px 15px;
+    border-radius: 5px;
+    font-size: 13px;
+    color: #5e501c;
+    margin-top: 15px;
+}
+
+/* Terms */
+.terms {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.terms input {
+    width: auto;
+    margin-top: 4px;
+}
+
+.terms label {
+    font-weight: normal;
+    font-size: 13px;
+}
+
+/* Submit */
+.submit-button {
+    width: 100%;
+    border: none;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #123b72, #09264b);
+    color: white;
+    padding: 16px;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.submit-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(7,89,232,0.25);
+}
+
+/* Success */
+.success {
+    display: none;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.success-icon {
+    width: 70px;
+    height: 70px;
+    margin: auto auto 20px;
+    border-radius: 50%;
+    background: #e9f8ed;
+    color: #138a32;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 35px;
+}
+
+.success h2 {
+    color: #138a32;
+    margin-bottom: 12px;
+}
+
+.success p {
+    color: #5d6673;
+    margin: 6px 0;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 18px;
+    background: #f7f7f7;
+    color: #7a828d;
+    font-size: 12px;
+}
+
+/* Mobile */
+@media(max-width: 650px) {
+
+    body {
+        padding: 15px 8px;
+    }
+
+    .header {
+        padding: 30px 18px;
+    }
+
+    .header h1 {
+        font-size: 24px;
+    }
+
+    .header h2 {
+        font-size: 16px;
+    }
+
+    .form-body {
+        padding: 22px 18px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .full {
+        grid-column: auto;
+    }
+
+    .payment-methods {
+        grid-template-columns: 1fr;
+    }
+
+    .payment-row {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .payment-row .value {
+        text-align: left;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<div class="form-container">
+
+    <!-- HEADER -->
+    <div class="header">
+
+        <h1>D Y Patil Technical Campus, Talsande</h1>
+
+        <h2>Mechanical Engineering Learning Access</h2>
+
+        <p>
+            Mechanical Engineering Courses • Practical Projects • Skill Development
+        </p>
+
+    </div>
+
+
+    <div class="form-body">
+
+        <form id="registrationForm">
+
+            <!-- PERSONAL DETAILS -->
+            <div class="section">
+
+                <h2 class="section-title">
+                    Personal Details
+                </h2>
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label>Full Name *</label>
+
+                        <input
+                            type="text"
+                            placeholder="Enter your full name"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="field">
+                        <label>Email Address *</label>
+
+                        <input
+                            type="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="field">
+                        <label>Mobile Number *</label>
+
+                        <input
+                            type="tel"
+                            placeholder="Enter your mobile number"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="field">
+                        <label>Date of Birth</label>
+
+                        <input type="date">
+                    </div>
+
+
+                    <div class="field">
+                        <label>City</label>
+
+                        <input
+                            type="text"
+                            placeholder="Enter your city"
+                        >
+                    </div>
+
+
+                    <div class="field">
+                        <label>State</label>
+
+                        <input
+                            type="text"
+                            placeholder="Enter your state"
+                        >
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- EDUCATION -->
+            <div class="section">
+
+                <h2 class="section-title">
+                    Education / Professional Details
+                </h2>
+
+                <div class="form-grid">
+
+                    <div class="field">
+
+                        <label>Education Level *</label>
+
+                        <select required>
+
+                            <option value="">
+                                -- Select Education Level --
+                            </option>
+
+                            <option>
+                                School Student
+                            </option>
+
+                            <option>
+                                Diploma
+                            </option>
+
+                            <option>
+                                Undergraduate
+                            </option>
+
+                            <option>
+                                Postgraduate
+                            </option>
+
+                            <option>
+                                Working Professional
+                            </option>
+
+                            <option>
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>Year of Study</label>
+
+                        <select>
+
+                            <option value="">
+                                -- Select Year --
+                            </option>
+
+                            <option>1st Year</option>
+                            <option>2nd Year</option>
+                            <option>3rd Year</option>
+                            <option>4th Year</option>
+                            <option>Completed</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>College / University</label>
+
+                        <input type="text" value="D Y Patil Technical Campus, Talsande" readonly>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>Course / Degree</label>
+
+                        <input type="text" value="Mechanical Engineering" readonly>
+
+                    </div>
+
+
+                    <div class="field full">
+
+                        <label>Area of Interest</label>
+
+                        <input
+                            type="text"
+                            placeholder="e.g. Machine Design, CAD/CAM, Thermodynamics, Manufacturing"
+                        >
+
+                    </div>
+
+
+                    <div class="field full">
+
+                        <label>
+                            Skills You Want to Learn
+                        </label>
+
+                        <textarea
+                            placeholder="e.g. AutoCAD, SolidWorks, CNC, CAD/CAM, thermodynamics, manufacturing processes..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SUBSCRIPTION -->
+            <div class="section">
+
+                <h2 class="section-title">
+                    Subscription Plan
+                </h2>
+
+                <div class="subscription-card">
+
+                    <h3>
+                        1-Year Mechanical Engineering Learning Registration
+                    </h3>
+
+                    <p>
+                        Get one year of access to civil engineering learning resources, practical projects, and professional development content.
+                    </p>
+
+
+                    <ul class="features">
+
+                        <li>Mechanical Engineering Courses</li>
+
+                        <li>Practical Design and Site Projects</li>
+
+                        <li>Professional Certificates (where offered)</li>
+
+                        <li>Industry-Relevant Skills</li>
+
+                        <li>Machine Design and Engineering Mechanics</li>
+
+                        <li>AutoCAD, SolidWorks and CAD/CAM</li>
+
+                        <li>Manufacturing Processes, Thermodynamics and Workshop Practice</li>
+
+                        <li>1-Year Access</li>
+
+                    </ul>
+
+
+                    <div class="price-row">
+
+                        <span>Total Subscription Fee</span>
+
+                        <span class="price">
+                            ₹10,500
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PAYMENT -->
+            <div class="section">
+
+                <h2 class="section-title">
+                    Payment Details
+                </h2>
+
+
+                <div class="payment-methods">
+
+                    <div class="payment-method">
+
+                        <input
+                            type="radio"
+                            id="upi"
+                            name="payment"
+                            value="UPI"
+                            checked
+                            onchange="changePayment('upi')"
+                        >
+
+                        <label
+                            for="upi"
+                            class="payment-label"
+                        >
+                            📱 UPI Payment
+                        </label>
+
+                    </div>
+
+
+                    <div class="payment-method">
+
+                        <input
+                            type="radio"
+                            id="bank"
+                            name="payment"
+                            value="Bank Transfer"
+                            onchange="changePayment('bank')"
+                        >
+
+                        <label
+                            for="bank"
+                            class="payment-label"
+                        >
+                            🏦 Bank Transfer
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- UPI -->
+                <div
+                    id="upiBox"
+                    class="payment-box"
+                >
+
+                    <h3>
+                        📱 UPI Payment
+                    </h3>
+
+
+                    <div class="payment-row">
+
+                        <span class="label">
+                            UPI ID
+                        </span>
+
+                        <span class="value">Use the verified payment details provided by the college</span>
+
+                    </div>
+
+
+                    <div class="payment-row">
+
+                        <span class="label">
+                            Amount
+                        </span>
+
+                        <span class="value">
+                            ₹10,500
+                        </span>
+
+                    </div>
+
+
+                    <div class="notice">
+
+                        Confirm the  UPI ID  before making any payment. After completing the payment,
+                        enter your transaction details below.
+
+                    </div>
+
+                </div>
+
+
+                <!-- BANK -->
+                <div
+                    id="bankBox"
+                    class="payment-box"
+                    style="display:none;"
+                >
+
+                    <h3>
+                        🏦 Bank Transfer
+                    </h3>
+
+
+                    <div class="payment-row">
+
+                        <span class="label">
+                            Account Holder
+                        </span>
+
+                        <span class="value">To be confirmed with the college</span>
+
+                    </div>
+
+
+                    <div class="payment-row">
+
+                        <span class="label">
+                            Bank Name
+                        </span>
+
+                        <span class="value">To be confirmed</span>
+
+                    </div>
+
+
+                    <div class="payment-row">
+
+                        <span class="label">
+                            Account Number
+                        </span>
+
+                       <span class="value"></span>
+
+                    </div>
+
+
+                    <div class="payment-row">
+
+                        <span class="label">
+                            IFSC Code
+                        </span>
+
+                        <span class="value"></span>
+
+                    </div>
+
+
+                    <div class="payment-row">
+
+                        <span class="label">
+                            Amount
+                        </span>
+
+                        <span class="value">
+                            ₹10,500
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TRANSACTION DETAILS -->
+                <div class="form-grid">
+
+                    <div class="field">
+
+                        <label>
+                            Transaction / UTR Number *
+                        </label>
+
+                        <input
+                            type="text"
+                            placeholder="Enter UTR / Transaction ID"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Payment Date *
+                        </label>
+
+                        <input
+                            type="date"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="field full">
+
+                        <label>
+                            Payment Screenshot *
+                        </label>
+
+                        <input
+                            type="file"
+                            accept="image/*"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="notice">
+
+                    Your payment will be verified before the
+                    subscription is activated.
+
+                </div>
+
+            </div>
+
+
+            <!-- TERMS -->
+            <div class="terms">
+
+                <input
+                    type="checkbox"
+                    id="terms"
+                    required
+                >
+
+                <label for="terms">
+
+                    I confirm that the information provided is
+                    correct and I agree to the Terms & Conditions
+                    and Privacy Policy.
+
+                </label>
+
+            </div>
+
+
+            <!-- SUBMIT -->
+            <button
+                type="submit"
+                class="submit-button"
+            >
+                Submit Registration & Payment Details
+            </button>
+
+        </form>
+
+
+        <!-- SUCCESS -->
+        <div
+            class="success"
+            id="successMessage"
+        >
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>
+                Registration Submitted Successfully!
+            </h2>
+
+            <p>
+                Thank you for subscribing to the
+                <strong>
+                    1-Year Mechanical Engineering Learning Registration.
+                </strong>
+            </p>
+
+            <p>
+                Your payment details have been submitted
+                for verification.
+            </p>
+
+            <p>
+                Your subscription will be activated after
+                successful payment verification.
+            </p>
+
+            <br>
+
+            <strong>
+                Subscription Amount: ₹10,500
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+
+        Independent Mechanical Engineering Learning Registration Template Registration<br><span style="display:block;margin-top:6px;">Verify college and payment details directly with the institution: <a href="https://dyp-atu.edu.in/" target="_blank" rel="noopener noreferrer">Visit the official university website</a>.</span>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function changePayment(type) {
+
+    const upiBox = document.getElementById("upiBox");
+    const bankBox = document.getElementById("bankBox");
+
+    if (type === "upi") {
+
+        upiBox.style.display = "block";
+        bankBox.style.display = "none";
+
+    } else {
+
+        upiBox.style.display = "none";
+        bankBox.style.display = "block";
+
+    }
+
+}
+
+
+document
+.getElementById("registrationForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    document
+    .getElementById("registrationForm")
+    .style.display = "none";
+
+    document
+    .getElementById("successMessage")
+    .style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+});
+
+</script>
+
+</body>
+</html>
